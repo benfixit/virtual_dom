@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual DOM</title>
+</head>
+    <div id="app"></div>
+<body>
+    <script src="index.js"></script>
+    <script>
+        const createVApp = count => {
+            return createElement('div', { attrs: { class: 'divAClass', id: 'divAId' }, children: [
+                createElement('a', { attrs: { href: 'https://www.google.com', target: '_blank' }, children: [`Google - ${count}`] })
+            ]});
+        }
+
+        let count = 0;
+
+        let newApp = render(createVApp(count))
+
+        const app = document.getElementById('app');
+
+        let rootElem = mount(newApp, app)
+
+        // setInterval(() => {
+        //     newApp = render(createVApp(count))
+        //     rootElem = mount(newApp, rootElem)
+        //     count++;
+        // }, 1000)
+    </script>
+</body>
+</html>
